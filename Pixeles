@@ -1,0 +1,93 @@
+PImage francia;
+PImage manzana;
+PImage flores;
+PImage dali;
+
+float delta;
+float gama;
+float beta;
+float alfa;
+int pantalla = 0;
+
+
+
+void setup(){
+  size(400,420);
+  francia = loadImage ("francia.jpg");
+ manzana = loadImage ("manzana.jpg");
+ flores = loadImage ("flores.jpg");
+ dali = loadImage ("dali.jpg");
+ 
+}
+
+void draw(){
+  switch(key){
+   case 'a':
+    flores();
+   break;
+   case 's':
+    manzana();
+   break;
+   case 'd':
+    francia();
+   break;
+   case 'f':
+    dali();
+   break;
+ }
+ noStroke();
+ fill(255);
+ rect(0,400,400,20);
+ fill(0);
+ text("Presiona A,S,D y F para cambiar imagen",100,415);
+}
+
+void flores(){
+  background(0);
+  delta+=0.1;
+  noStroke();
+  for(int i=0; i<=width; i+=5)
+   for(int j=0; j<=height; j+=5)
+   {
+  color r= flores.get(int(i),int(j));
+   fill (r);
+   rect(i,j,delta,delta);
+   }
+   if(mousePressed){
+    pantalla =1; 
+   }
+}
+
+void manzana(){
+  //background(0);
+  gama+=0.1;
+   for(int i=0; i<=width; i+=5)
+   for(int j=0; j<=height; j+=5)
+   {
+  color r= manzana.get(int(i),int(j));
+   fill (r);
+   rect(i,j,gama,gama);
+   }
+}
+
+void francia(){
+  beta+=0.1;
+   for(int i=0; i<=width; i+=5)
+   for(int j=0; j<=height; j+=5)
+   {
+  color r= francia.get(int(i),int(j));
+   fill (r);
+   rect(i,j,beta,beta);
+   }
+}
+
+void dali(){
+  alfa+=0.1;
+    for(int i=0; i<=width; i+=5)
+   for(int j=0; j<=height; j+=5)
+   {
+  color r= dali.get(int(i),int(j));
+   fill (r);
+   rect(i,j,alfa,alfa);
+   }
+}
